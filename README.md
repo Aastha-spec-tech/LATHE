@@ -2,6 +2,8 @@
 
 **The first open benchmark for voice AI on Indian-language workloads.**
 
+**Live dashboard → [lathe-dashboard.vercel.app](https://lathe-dashboard.vercel.app)**
+
 Most TTS benchmarks are built on clean US-English sentences. Indian production voice agents deal with Hinglish code-switching, 12-digit IFSC codes, South Indian names with 4+ syllables, and OTP readbacks where a single digit error is a compliance incident. LATHE measures what actually matters for these workloads: latency.
 
 ---
