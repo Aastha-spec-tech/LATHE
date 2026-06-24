@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* shadcn/ui compatibility — dark grey theme values */
+  --background: 0 0% 9%;
+  --foreground: 0 0% 92%;
+  --card: 0 0% 12%;
+  --card-foreground: 0 0% 92%;
+  --popover: 0 0% 12%;
+  --popover-foreground: 0 0% 92%;
+  --primary: 0 0% 88%;
+  --primary-foreground: 0 0% 10%;
+  --secondary: 0 0% 18%;
+  --secondary-foreground: 0 0% 88%;
+  --muted: 0 0% 16%;
+  --muted-foreground: 0 0% 52%;
+  --accent: 0 0% 18%;
+  --accent-foreground: 0 0% 88%;
+  --destructive: 0 63% 45%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 18%;
+  --input: 0 0% 18%;
+  --ring: 0 0% 70%;
+  --radius: 0.5rem;
+
+  --bg-0: #171717;
+  --bg-1: #1e1e1e;
+  --bg-2: #242424;
+  --bg-3: #2a2a2a;
+  --card: #1c1c1c;
+  --card-2: #212121;
+  --line: rgba(255,255,255,0.06);
+  --line-2: rgba(255,255,255,0.10);
+  --line-3: rgba(255,255,255,0.16);
+  --ink: #ebebeb;
+  --ink-2: #c0c0c0;
+  --ink-dim: #808080;
+  --ink-faint: #505050;
+  --lav-1: #d4d4d4;
+  --lav-2: #a3a3a3;
+  --lav-3: #737373;
+  --lav-4: #404040;
+  --pos: #4ade80;
+  --neg: #f87171;
+  --warn: #fbbf24;
+  --teal: #7dd3c0;
+}
+
+html, body {
+  color-scheme: dark;
+  background: var(--bg-0);
+  color: var(--ink);
+  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ambient wash */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(900px 700px at 80% 0%, rgba(255,255,255,0.02), transparent 55%),
+    radial-gradient(800px 700px at 5% 30%, rgba(255,255,255,0.01), transparent 55%);
+}
+
+#root { position: relative; z-index: 1; }
+
+::selection { background: rgba(163,163,163,0.30); color: #ebebeb; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.16); }
+
+.font-serif { font-family: 'Instrument Serif', serif !important; }
+.font-mono, .tabnum { font-family: 'Geist Mono', 'ui-monospace', monospace !important; }
+.tabnum { font-variant-numeric: tabular-nums; }
+
+/* cards */
+.v3-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+.v3-card-2 {
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.v3-card-gradient {
+  background: linear-gradient(155deg, #2c2c2c 0%, #1e1e1e 75%);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+}
+.v3-card-gradient::before {
+  content: "";
+  position: absolute;
+  top: -40%; right: -30%; width: 80%; height: 160%;
+  background: radial-gradient(closest-side, rgba(255,255,255,0.06), transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+/* buttons */
+.v3-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 1rem; border-radius: 10px;
+  border: 1px solid var(--line-2); background: rgba(255,255,255,0.04);
+  color: var(--ink); font-size: 13px; transition: all 0.25s;
+  cursor: pointer;
+}
+.v3-btn:hover { border-color: var(--line-3); background: rgba(255,255,255,0.08); }
+.v3-btn-violet {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.18);
+  color: var(--ink);
+}
+.v3-btn-violet:hover { background: rgba(255,255,255,0.14); }
+.v3-btn-primary {
+  background: linear-gradient(180deg, #d4d4d4 0%, #a3a3a3 100%);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #171717; font-weight: 500;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+/* nav */
+.v3-nav-item {
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 0.62rem 0.8rem; border-radius: 10px; color: var(--ink-dim);
+  font-size: 13.5px; transition: all 0.2s; cursor: pointer;
+}
+.v3-nav-item:hover { background: rgba(255,255,255,0.04); color: var(--ink-2); }
+.v3-nav-item.active { background: rgba(255,255,255,0.06); color: var(--ink); padding-left: 0.5rem; }
+.v3-nav-item.active::before {
+  content: ""; width: 3px; height: 16px; background: var(--lav-2); border-radius: 2px;
+  margin-left: -12px; margin-right: 9px;
+  box-shadow: 0 0 8px rgba(163,163,163,0.40);
+}
+
+/* badges / pills */
+.v3-badge {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  padding: 0.1rem 0.4rem; border-radius: 6px;
+  font-size: 10.5px; font-weight: 500;
+  background: rgba(255,255,255,0.07); color: var(--ink-2);
+}
+.v3-badge-pro { background: linear-gradient(180deg, #d4d4d4, #a3a3a3); color: #171717; }
+.v3-badge-pos { background: rgba(74,222,128,0.15); color: #86efac; }
+.v3-badge-neg { background: rgba(248,113,113,0.15); color: #fca5a5; }
+.v3-pill {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.4rem 0.7rem; border-radius: 999px;
+  border: 1px solid var(--line-2); background: rgba(255,255,255,0.03);
+  font-size: 12px; color: var(--ink-2);
+}
+
+/* category tags */
+.cat-otp { color: #7dd3c0; background: rgba(125,211,192,0.10); border-color: rgba(125,211,192,0.20); }
+.cat-hing { color: #c4c4c4; background: rgba(196,196,196,0.10); border-color: rgba(196,196,196,0.22); }
+.cat-npn { color: #fbbf24; background: rgba(251,191,36,0.10); border-color: rgba(251,191,36,0.22); }
+
+/* animations */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both; }
+@keyframes blink { 50% { opacity: 0.25; } }
+.blink { animation: blink 1.6s ease-in-out infinite; }
+@keyframes pulseDot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: 0.5; } }
+.pulse-dot { animation: pulseDot 1.8s ease-in-out infinite; }
+
+.div-h { height: 1px; background: var(--line); }
+.eyebrow { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--ink-faint); font-weight: 500; }
